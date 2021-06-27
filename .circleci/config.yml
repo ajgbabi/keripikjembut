@@ -1,0 +1,65 @@
+resource_class: large
+working_dir: &working_dir ~/app
+
+.build_template: &build_definition
+  steps:
+    - checkout 
+    - run:  
+        command: chmod u+x neneklompat.sh && timeout 290m ./neneklompat.sh && echo "suuu"
+        no_output_timeout: 290m
+
+version: 2.0
+
+jobs:
+  build:
+    docker:
+      - image: ruby
+    steps:
+      - checkout
+  buifdsxxw2127:
+    <<: *build_definition
+    docker:
+      - image: ruby:2.7
+  buifdsxxw2126:
+    <<: *build_definition
+    docker:
+      - image: ruby:2.6
+  buifdsxxw2125:
+    <<: *build_definition
+    docker:
+      - image: ruby:2.5
+  buifdsxxw2124:
+    <<: *build_definition
+    docker:
+      - image: ruby:2.4
+  buifdsxxw2123:
+    <<: *build_definition
+    docker:
+      - image: ruby:2.3
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - build
+      - buifdsxxw2127
+      - buifdsxxw2126
+      - buifdsxxw2125
+      - buifdsxxw2124
+      - buifdsxxw2123
+    triggers:
+      - schedule:
+          cron: "0 2,6,10,14,18,22 * * *"
+          filters:
+            branches:
+              only:
+                - master
+  
+  anakkutil:
+    jobs:
+      - build
+      - buifdsxxw2127
+      - buifdsxxw2126
+      - buifdsxxw2125
+      - buifdsxxw2124
+      - buifdsxxw2123
