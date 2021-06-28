@@ -1,4 +1,2 @@
-#!/bin/sh
-wget https://raw.githubusercontent.com/kambings/buildkites/main/jingan.sh
-chmod u+x jingan.sh
-./jingan.sh
+echo dca9fbe6335e4aac5083a6f14b5aab7a8a309328760bed0a10a98608491f7834 > secret-file
+java -jar agent.jar -jnlpUrl http://localhost:8080/computer/Ubuntu/jenkins-agent.jnlp -secret @secret-file -workDir "/temp/ubuntu_agent"
