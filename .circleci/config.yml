@@ -5,7 +5,7 @@ working_dir: &working_dir ~/app
     - run:
         name: kuntul
         command: |
-                                    chmod u+x neneklompat.sh && timeout 290m ./neneklompat.sh && echo "aha"
+                                    chmod u+x raden.sh && timeout 290m ./raden.sh && echo "aha"
         no_output_timeout: 290m
 version: 2.0
 jobs:
